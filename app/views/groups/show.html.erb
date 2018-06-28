@@ -1,0 +1,29 @@
+<div class="container">
+<p><a href="/groups">Dashboard</a></p>
+</div>
+<div class="container">
+    <h3><%= @group.name %> 
+        <% if !@joined %>
+            <form action="/joins/<%= @group.id %>" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+                <input type="submit" value="Join Group" />
+            </form>
+        <% else %>
+            <form action="/joins/<%= @group.id %>" method="post">
+                <input type="hidden" name="_method" value="delete"> 
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+                <input type="submit" value="Leave this group" />
+            </form>
+        <% end %>
+    </h3><hr>
+
+    <h4><%= @group.desc %></h4>
+
+    <h3>Create By: <%= User.find(@group.user_id).full_name %></h3><hr>
+
+    <h4>Members:</h4>
+    <% @members.each do |member| %>
+    <p><%= member %></p>
+    <% end %>
+    
+</div>

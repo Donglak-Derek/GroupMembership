@@ -1,0 +1,41 @@
+
+<div class="container">
+    <h1>Hi, <%= current_user.first_name %> <%= current_user.last_name %>!</h1>
+    <h3>Here are the organizations you may join:</h3><hr>
+     
+     <div class="container">
+     	<% @groups.each do |group| %>
+     		<% if current_user.id == group.user_id %>
+     			<form action="/groups/<%= group.id %>" method="post">
+     			<input type="hidden" name="_method" value="delete">	
+            	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+            	<input type="submit" value="Delete this group" />
+            	</form>
+     		<% end %>
+        	<h3><a href="/groups/<%= group.id %>"><%= group.name %></a></h3>
+            <p>Members: <%= Join.where(group_id: group.id).count %></p>
+            <p><%= group.desc %></p>
+            <hr>
+ 		<% end %>
+
+</div>
+
+
+<div class="container">
+    <h4> Create a new organization</h4>
+        <form action="/groups" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+            <div class="form-group">
+                <label>Org Name:</label>
+                <input class="form-control" type="text" name="name">
+            </div>
+            
+            <div class="form-group">
+                <label>Description:</label>
+                <input class="form-control" type="text" name="desc">
+            </div>
+               
+        <button class="btn btn-outline-success" type="submit">Create</button>
+    </form>
+</div>
