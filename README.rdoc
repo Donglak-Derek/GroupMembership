@@ -1,28 +1,24 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+project: Group Membership
 
-Things you may want to cover:
+Fuctions
 
-* Ruby version
+1. Registration and login with validation. Validation errors appear on the page.
+2. Logout feature.
+3. Dashboard displays the logged user's name, list of groups, correct number of members and the group description.
+4. Ability to add new organization/groups with calidation.
+5. Logged user should have the capability to delete the groups he or she created.
+6. Individual group page to display the name of the group, description, creator and the names of the members.
+7. Join/Leave a group. The group individual page data on the members also update once a user joins/leaves a group.
+8. Group creator is the first member of the group. But he can leave the group he created.
 
-* System dependencies
+I used
+ruby 2.3.1p112,
+Rails 4.2.7,
+Postgres.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-Derek
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+d
